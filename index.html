@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Simples Nacional - Contábil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Controle de Apuração - Simples Nacional</h1>
+        <p>Cálculo automático baseado no Anexo III (Serviços)</p>
+    </header>
+
+    <div class="input-group">
+        <div class="input-wrapper">
+            <label for="mesCompetencia">Mês de Competência</label>
+            <input type="month" id="mesCompetencia">
+        </div>
+
+        <div class="input-wrapper">
+            <label for="faturamentoMes">Faturamento do Mês (R$)</label>
+            <input type="number" id="faturamentoMes" step="0.01" placeholder="Ex: 10000,00">
+            <span class="obs">Valor que será tributado.</span>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="rbt12">Receita Bruta Acumulada 12 Meses (RBT12)</label>
+            <input type="number" id="rbt12" step="0.01" placeholder="Ex: 150000,00">
+            <span class="obs">Copie do sistema "Módulos" ou Receita Federal.</span>
+        </div>
+    </div>
+
+    <button id="btnCalcular">Calcular e Adicionar na Tabela</button>
+    <div id="msgErro" class="status-box"></div>
+
+    <div class="table-container">
+        <table id="tabelaImpostos">
+            <thead>
+                <tr>
+                    <th>Mês</th>
+                    <th>Faturamento (Serviço)</th>
+                    <th>RBT12 (Acumulado)</th>
+                    <th>Alíquota Efetiva</th>
+                    <th>Imposto (SIMPLES)</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td>TOTAL ANO</td>
+                    <td id="totalFaturamento">R$ 0,00</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td id="totalImposto">R$ 0,00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <div class="actions">
+        <button onclick="limparTabela()" class="btn-danger">Limpar Tabela</button>
+        <button onclick="exportarParaCSV()" class="btn-success">Exportar para Excel (.csv)</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
